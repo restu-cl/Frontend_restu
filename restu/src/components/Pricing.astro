@@ -1,0 +1,100 @@
+<section id="precio" class="py-20 scroll-mt-[72px]">
+  <div class="mx-auto max-w-[1240px] px-6">
+    <div data-reveal="up" class="text-center max-w-[680px] mx-auto mb-14">
+      <span class="inline-block text-[11px] font-bold tracking-[.18em] uppercase text-[#b85527] mb-3">Tu margen</span>
+      <h2 class="text-[clamp(26px,3.8vw,42px)] font-extrabold tracking-[-0.022em] leading-[1.1] text-[#1a1a1a]">
+        Recupera tu margen.<br/>Dile adiós al 30%.
+      </h2>
+      <p class="mt-3.5 text-[16px] text-[#525252] leading-[1.55]">
+        Los marketplaces retienen casi un tercio de cada pedido. Restu cobra un cargo fijo mensual. La diferencia se queda en tu caja.
+      </p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-9 lg:gap-14 items-center">
+      <div data-reveal="left">
+        <h3 class="text-[clamp(20px,2.6vw,28px)] font-extrabold tracking-tight text-[#1a1a1a]">
+          Si vendes $3.000.000 al mes en delivery…
+        </h3>
+        <div id="roi-counter" class="text-[clamp(48px,7vw,68px)] font-black tracking-[-0.04em] text-[#DE6B35] leading-none my-2.5 tabular-nums">
+          +$0
+        </div>
+        <div class="text-[14px] text-[#525252] font-medium">de margen recuperado al mes, todos los meses.</div>
+        <div class="mt-6 flex flex-wrap gap-2.5">
+          {['Sin comisiones ocultas', 'Tus clientes son tuyos', 'Pago directo a tu cuenta'].map(t => (
+            <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-[#eee5d3] text-[13px] font-semibold text-[#1a1a1a]">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+              </svg>
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+      <div data-reveal="right" class="rounded-[22px] p-6 bg-white border border-[#eee5d3]" style="box-shadow: 0 20px 48px -22px rgba(0,0,0,.11)">
+        <div class="flex justify-between items-center mb-2">
+          <strong class="text-[14px] font-bold text-[#1a1a1a]">Con marketplace (30% comisión)</strong>
+          <span class="font-extrabold text-[#dc2626] tabular-nums">−$900.000</span>
+        </div>
+        <div id="bar-marketplace" class="h-[34px] rounded-[9px] overflow-hidden mb-5 relative flex items-center px-3 bg-[#f3f4f6]">
+          <div class="rl-bar absolute left-0 top-0 h-full rounded-[9px]" style="width: 0%; background: #fecaca; transition-delay: .1s"/>
+          <span class="relative z-[1] text-[10px] font-extrabold text-[#b91c1c] tracking-[.06em]">PIERDES 30%</span>
+        </div>
+        <div class="flex justify-between items-center mb-2">
+          <strong class="text-[14px] font-bold text-[#1a1a1a]">Con Restu (cargo fijo mensual)</strong>
+          <span class="font-extrabold text-[#16a34a] tabular-nums">−$29.990</span>
+        </div>
+        <div id="bar-restu" class="h-[34px] rounded-[9px] overflow-hidden mb-5 relative flex items-center px-3 bg-[#f3f4f6]">
+          <div class="rl-bar absolute left-0 top-0 h-full rounded-[9px]" style="width: 0%; background: #86efac; transition-delay: .28s"/>
+          <span class="relative z-[1] text-[10px] font-extrabold text-[#14532d] tracking-[.06em]">QUEDA TUYO</span>
+        </div>
+        <div class="h-px bg-[#eee5d3] my-4"/>
+        <div class="rounded-[13px] p-4 text-center"
+          style="background: linear-gradient(135deg, rgba(222, 107, 53, .08), rgba(255, 135, 83, .04)); border: 1px solid rgba(222, 107, 53, .2)">
+          <div class="text-[11px] font-bold uppercase tracking-[.1em] text-[#525252]">Ahorro neto al año</div>
+          <div id="total-counter" class="text-[32px] font-black tracking-[-0.02em] text-[#DE6B35] my-1 tabular-nums">
+            $0
+          </div>
+          <div class="text-[11.5px] text-[#8a8a8a]">Eso compra un horno nuevo. Cada año.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function fmtNum(n: number) {
+    return Math.round(n).toLocaleString('es-CL');
+  }
+
+  const roiCounter = document.getElementById('roi-counter');
+  const totalCounter = document.getElementById('total-counter');
+  const barMarketplace = document.querySelector('#bar-marketplace .rl-bar') as HTMLElement;
+  const barRestu = document.querySelector('#bar-restu .rl-bar') as HTMLElement;
+  const roiSection = document.getElementById('precio');
+
+  if (roiSection && roiCounter && totalCounter && barMarketplace && barRestu) {
+    const io = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) {
+        const dur = 1900;
+        const start = performance.now();
+        const ease = (t: number) => 1 - Math.pow(1 - t, 4);
+
+        const tick = (now: number) => {
+          const p = Math.min((now - start) / dur, 1);
+          const ep = ease(p);
+          const roiVal = ep * 900000;
+          const totalVal = ep * 10440120;
+
+          if (roiCounter) roiCounter.textContent = '+$' + fmtNum(roiVal);
+          if (totalCounter) totalCounter.textContent = '$' + fmtNum(totalVal);
+          if (barMarketplace) barMarketplace.style.width = (ep * 69) + '%';
+          if (barRestu) barRestu.style.width = (ep * 97) + '%';
+
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+        io.disconnect();
+      }
+    }, { threshold: 0.25 });
+    io.observe(roiSection);
+  }
+</script>

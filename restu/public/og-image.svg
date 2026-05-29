@@ -1,0 +1,45 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#fff9f0"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#gradient)"/>
+  
+  <!-- Logo -->
+  <g transform="translate(100, 100)">
+    <rect width="80" height="80" rx="16" fill="#DE6B35"/>
+    <path d="M20 32h40M20 40h32M20 48h24" stroke="#fff" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  
+  <!-- Title -->
+  <text x="100" y="280" font-family="Inter, system-ui, sans-serif" font-size="72" font-weight="800" fill="#1a1a1a">
+    Restu
+  </text>
+  
+  <!-- Subtitle -->
+  <text x="100" y="340" font-family="Inter, system-ui, sans-serif" font-size="32" font-weight="500" fill="#525252">
+    Control total de tu restaurante
+  </text>
+  
+  <!-- Description -->
+  <text x="100" y="420" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#525252">
+    La plataforma que conecta a tus clientes directo a tu cocina.
+  </text>
+  <text x="100" y="460" font-family="Inter, system-ui, sans-serif" font-size="24" fill="#525252">
+    Sin comisiones de marketplace.
+  </text>
+  
+  <!-- CTA Badge -->
+  <rect x="100" y="520" width="320" height="60" rx="12" fill="#DE6B35"/>
+  <text x="260" y="558" font-family="Inter, system-ui, sans-serif" font-size="24" font-weight="600" fill="#fff" text-anchor="middle">
+    Solicita una Demo Gratis
+  </text>
+  
+  <!-- Decorative elements -->
+  <circle cx="1050" cy="150" r="120" fill="#DE6B35" opacity="0.1"/>
+  <circle cx="1100" cy="500" r="80" fill="#DE6B35" opacity="0.08"/>
+  
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="0" x2="1200" y2="630">
+      <stop offset="0%" stop-color="#fff9f0"/>
+      <stop offset="100%" stop-color="#fdf1df"/>
+    </linearGradient>
+  </defs>
+</svg>

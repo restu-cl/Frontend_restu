@@ -1,0 +1,225 @@
+---
+interface Props {
+  onEnter?: string;
+}
+
+const { onEnter = '/' } = Astro.props;
+---
+
+<section class="relative overflow-hidden px-6 pt-[60px] pb-[72px]">
+  <div class="pointer-events-none absolute -top-48 -right-44 w-[640px] h-[640px] rounded-full"
+    style="background: radial-gradient(circle, rgba(255, 106, 61, .16), transparent 58%)"/>
+
+  <div class="mx-auto max-w-[1240px]">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_1.1fr] gap-12 lg:gap-14 items-center">
+
+      {/* copy — staggered load animations */}
+      <div>
+        <span class="rl-h0 inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-[13px] font-semibold text-[#b85527] border border-[#b85527]/[.18] mb-5"
+          style="background: rgba(222, 107, 53, .10)">
+          <span class="rl-pdot"/>
+          Hecho en Chile · Para tu restaurante
+        </span>
+        <h1 class="rl-h1 text-[clamp(34px,5.2vw,56px)] font-extrabold leading-[1.05] tracking-[-0.03em] text-[#1a1a1a]">
+          Acaba con el caos de la cocina.{' '}
+          <span class="text-[#b85527]">Dueño</span> de tus pedidos en minutos.
+        </h1>
+        <p class="rl-h2 mt-5 text-[17px] text-[#525252] leading-[1.58] max-w-[520px]">
+          La plataforma que conecta a tus clientes directo a tu cocina.{' '}
+          <strong>Sin comisiones de marketplace</strong> y con control total
+          del pedido, el inventario y el margen.
+        </p>
+        <div class="rl-h3 mt-8 flex flex-wrap items-center gap-3">
+          <a href={onEnter}
+            class="btn-p inline-flex items-center gap-2 text-white text-[15px] font-semibold rounded-xl px-6 py-3.5 transition-all no-underline">
+            Solicita una Demo Gratis
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+            </svg>
+          </a>
+          <button data-scroll-to="como-funciona"
+            class="text-[#525252] hover:text-[#b85527] text-[15px] font-medium px-3 py-3.5 transition-colors cursor-pointer">
+            Ver cómo funciona →
+          </button>
+        </div>
+        <div class="rl-h4 mt-6 flex flex-wrap gap-4">
+          {['Sin tarjeta de crédito', 'Listo en 10 minutos', 'Soporte en español'].map(t => (
+            <span class="inline-flex items-center gap-2 text-[14px] text-[#525252] font-medium">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+              </svg>
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {/* composite mockup — 3-D tilt on mouse */}
+      <div id="tilt-stage"
+        class="rl-h5 relative w-full cursor-pointer"
+        style="aspect-ratio: 1.08/1">
+        <div id="tilt-inner" class="absolute inset-0">
+          {/* glow */}
+          <div class="absolute inset-[5%] rounded-full pointer-events-none"
+            style="background: radial-gradient(circle, rgba(222, 107, 53, .22), transparent 65%); filter: blur(48px)"/>
+
+          {/* PHONE */}
+          <div class="rl-ph absolute left-0 bottom-[2%] z-[2]"
+            style="width: 44%; aspect-ratio: 9/19; background: linear-gradient(160deg, #252528, #0d0d10); border-radius: 30px; padding: 7px; box-shadow: 0 28px 56px -18px rgba(0,0,0,.5), 0 0 0 1px rgba(255,255,255,.07) inset; transform: rotate(-7deg)">
+            <div class="w-full h-full flex flex-col overflow-hidden relative" style="background: #fff9f0; border-radius: 24px">
+              <div class="absolute top-[7px] left-1/2 -translate-x-1/2 z-[5]"
+                style="width: 54px; height: 16px; background: #111; border-radius: 999px"/>
+              <div class="flex items-end justify-between px-3 h-6 pb-[3px] text-[8px] font-bold text-[#333]">
+                <span>9:41</span><span>▮▮▮ WiFi</span>
+              </div>
+              <div class="flex items-center gap-2 px-3 py-2 border-b border-[#eee5d3]">
+                <span class="w-[22px] h-[22px] rounded-[7px] flex items-center justify-center text-[#525252]"
+                  style="background: rgba(0,0,0,.05)">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="m15 18-6-6 6-6"/>
+                  </svg>
+                </span>
+                <span class="flex-1 text-center text-[11.5px] font-bold text-[#1a1a1a]">La Bottega · Centro</span>
+                <span class="relative w-[26px] h-[26px] rounded-[7px] flex items-center justify-center text-white"
+                  style="background: #DE6B35">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                    <path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/>
+                  </svg>
+                  <span class="absolute -top-[3px] -right-[3px] w-[13px] h-[13px] rounded-full flex items-center justify-center text-white border-[1.5px] border-[#fff9f0]"
+                    style="background: #111; font-size: 8px; font-weight: 800">1</span>
+                </span>
+              </div>
+              <div class="flex-1 flex flex-col gap-2 px-3 py-2.5 overflow-hidden">
+                <div class="flex items-center justify-center rounded-xl text-[40px] relative overflow-hidden flex-shrink-0"
+                  style="aspect-ratio: 16/9; background: linear-gradient(135deg, #ffb87a, #ff7c42); box-shadow: 0 4px 12px -3px rgba(222, 107, 53, .3)">
+                  🍕
+                  <div class="absolute inset-0" style="background: radial-gradient(circle at 70% 25%, rgba(255,255,255,.28), transparent 55%)"/>
+                </div>
+                <div class="text-[12px] font-bold text-[#1a1a1a]">Pizza Margherita</div>
+                <div class="text-[8.5px] text-[#525252] leading-[1.35]">Masa madre, tomate San Marzano, mozzarella fior di latte.</div>
+                <div class="text-[13px] font-black text-[#b85527]">$8.990</div>
+                <div class="flex items-center justify-between rounded-[9px] px-2.5 py-1.5" style="background: rgba(0,0,0,.04)">
+                  <button class="w-5 h-5 rounded-[6px] flex items-center justify-center text-[#b85527] font-bold text-[13px]"
+                    style="background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.1)">−</button>
+                  <span class="text-[13px] font-bold">1</span>
+                  <button class="w-5 h-5 rounded-[6px] flex items-center justify-center text-[#b85527] font-bold text-[13px]"
+                    style="background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.1)">+</button>
+                </div>
+                <button class="rl-addglow mt-auto flex items-center justify-center gap-1.5 rounded-[10px] py-2.5 text-white font-bold text-[10.5px]"
+                  style="background: #DE6B35; letter-spacing: .01em">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14"/><path d="M12 5v14"/>
+                  </svg>
+                  AGREGAR · $8.990
+                </button>
+              </div>
+            </div>
+          </div>
+
+          {/* PARTICLES */}
+          <div class="absolute z-[3] pointer-events-none" style="left: 34%; top: 28%; width: 24%; height: 28%">
+            <span class="rl-pt"/>
+            <span class="rl-pt"/>
+            <span class="rl-pt"/>
+          </div>
+
+          {/* TABLET KDS */}
+          <div class="rl-tb absolute right-0 top-[4%] z-[1]"
+            style="width: 65%; aspect-ratio: 4/3; background: linear-gradient(160deg, #252528, #0d0d10); border-radius: 20px; padding: 9px; box-shadow: 0 32px 64px -22px rgba(0,0,0,.55), 0 0 0 1px rgba(255,255,255,.06) inset; transform: rotate(3deg)">
+            <div class="w-full h-full flex flex-col overflow-hidden" style="background: #0c0c0f; border-radius: 13px; color: #fff">
+              <div class="flex items-center justify-between px-3.5 py-2.5 border-b" style="background: #141418; border-color: rgba(255,255,255,.06)">
+                <div class="flex items-center gap-2 text-[11.5px] font-bold">
+                  <span class="rl-live"/><span>Cocina · La Bottega</span>
+                </div>
+                <div class="flex gap-3 text-[9.5px]" style="color: rgba(255,255,255,.45)">
+                  <span>14:32</span><span>3 activos</span>
+                </div>
+              </div>
+              <div class="flex items-center gap-2 px-3 py-1.5 text-[9.5px] font-semibold"
+                style="background: rgba(222, 107, 53, .14); border-bottom: 1px solid rgba(222, 107, 53, .22); color: rgba(255,255,255,.9)">
+                <span class="rl-bell w-5 h-5 rounded-[5px] flex items-center justify-center flex-shrink-0"
+                  style="background: #DE6B35">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                  </svg>
+                </span>
+                <span>🔔 <strong style="color: #ff9f70">#028 Nueva orden</strong> · Pizza Margherita + Coca‑Cola</span>
+              </div>
+              <div class="flex-1 grid gap-2 p-2 overflow-hidden" style="grid-template-columns: 1fr 1fr 1fr; background: #090909">
+                <div class="flex flex-col gap-1.5">
+                  <div class="flex justify-between items-center pb-1" style="font-size: 8.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.4)">
+                    <span>Nueva</span><span style="background: rgba(255,255,255,.06); color: rgba(255,255,255,.65); padding: 1px 5px; border-radius: 999px; font-size: 8px">1</span>
+                  </div>
+                  <div class="rl-new flex flex-col gap-1 rounded-[9px] p-2" style="background: linear-gradient(160deg, rgba(255, 106, 61, .12), rgba(255, 106, 61, .02)); border: 1px solid rgba(255, 106, 61, .5)">
+                    <div class="flex justify-between items-center">
+                      <span style="font-weight: 800; font-size: 11.5px; color: #ff8a5c">#028</span>
+                      <span style="font-size: 8px; color: rgba(255,255,255,.45)">0:12</span>
+                    </div>
+                    <ul style="font-size: 9px; color: rgba(255,255,255,.75); line-height: 1.5">
+                      <li>· 1× Pizza Margherita</li><li>· 1× Coca‑Cola</li>
+                    </ul>
+                    <div style="font-size: 8.5px; font-weight: 700; padding: 3px 5px; border-radius: 5px; background: #DE6B35; text-align: center; letter-spacing: .04em">▶ TOMAR</div>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <div class="flex justify-between items-center pb-1" style="font-size: 8.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.4)">
+                    <span>En cocina</span><span style="background: rgba(255,255,255,.06); color: rgba(255,255,255,.65); padding: 1px 5px; border-radius: 999px; font-size: 8px">2</span>
+                  </div>
+                  {[
+                    {n:'#027',t:'4:21',i:['2× Hamburguesa','1× Papas']},
+                    {n:'#026',t:'6:48',i:['1× Lasagna']}
+                  ].map(tk => (
+                    <div class="flex flex-col gap-1 rounded-[9px] p-2" style="background: #16161a; border: 1px solid rgba(255,255,255,.06)">
+                      <div class="flex justify-between items-center">
+                        <span style="font-weight: 800; font-size: 11.5px">{tk.n}</span>
+                        <span style="font-size: 8px; color: rgba(255,255,255,.45)">{tk.t}</span>
+                      </div>
+                      <ul style="font-size: 9px; color: rgba(255,255,255,.75); line-height: 1.5">{tk.i.map(i => <li key={i}>· {i}</li>)}</ul>
+                      <div style="font-size: 8.5px; font-weight: 700; padding: 3px 5px; border-radius: 5px; background: rgba(255,255,255,.06); text-align: center">✓ LISTO</div>
+                    </div>
+                  ))}
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <div class="flex justify-between items-center pb-1" style="font-size: 8.5px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(255,255,255,.4)">
+                    <span>Entregar</span><span style="background: rgba(255,255,255,.06); color: rgba(255,255,255,.65); padding: 1px 5px; border-radius: 999px; font-size: 8px">1</span>
+                  </div>
+                  <div class="flex flex-col gap-1 rounded-[9px] p-2" style="background: #16161a; border: 1px solid rgba(255,255,255,.06)">
+                    <div class="flex justify-between items-center">
+                      <span style="font-weight: 800; font-size: 11.5px">#025</span>
+                      <span style="font-size: 8px; color: rgba(255,255,255,.45)">8:30</span>
+                    </div>
+                    <ul style="font-size: 9px; color: rgba(255,255,255,.75); line-height: 1.5"><li>· 3× Empanadas</li></ul>
+                    <div style="font-size: 8.5px; font-weight: 700; padding: 3px 5px; border-radius: 5px; background: rgba(255,255,255,.06); text-align: center">📦 ENTREGAR</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const stage = document.getElementById('tilt-stage');
+  const inner = document.getElementById('tilt-inner');
+  if (stage && inner) {
+    let tiltActive = false;
+    stage.addEventListener('mousemove', (e) => {
+      const r = stage.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      inner.style.transform = `perspective(900px) rotateX(${-y * 11}deg) rotateY(${x * 11}deg)`;
+      inner.style.transition = 'transform .08s linear';
+      tiltActive = true;
+    });
+    stage.addEventListener('mouseleave', () => {
+      inner.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg)';
+      inner.style.transition = 'transform .7s cubic-bezier(.22,1,.36,1)';
+      tiltActive = false;
+    });
+  }
+</script>

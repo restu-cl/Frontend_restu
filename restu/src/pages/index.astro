@@ -1,0 +1,55 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Comparison from '../components/Comparison.astro';
+import Pricing from '../components/Pricing.astro';
+import Features from '../components/Features.astro';
+import CtaSection from '../components/CtaSection.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/animations.css';
+
+const onEnter = '/studio';
+const siteUrl = 'https://restu.cl';
+---
+
+<Layout
+  title="Restu — Control total de tu restaurante"
+  description="La plataforma que conecta a tus clientes directo a tu cocina. Sin comisiones de marketplace y con control total del pedido, el inventario y el margen."
+  canonical={siteUrl}
+  ogUrl={siteUrl}
+>
+  <Header onEnter={onEnter} />
+  <main id="main-content">
+    <Hero onEnter={onEnter} />
+    <Comparison />
+    <Pricing />
+    <Features />
+    <CtaSection onEnter={onEnter} />
+  </main>
+  <Footer onEnter={onEnter} />
+  
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Restu",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Web",
+    "description": "La plataforma que conecta a tus clientes directo a tu cocina. Sin comisiones de marketplace y con control total del pedido, el inventario y el margen.",
+    "offers": {
+      "@type": "Offer",
+      "price": "29990",
+      "priceCurrency": "CLP",
+      "availability": "https://schema.org/InStock"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Restu",
+      "url": siteUrl,
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/og-image.svg`
+      }
+    }
+  })} />
+</Layout>

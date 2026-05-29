@@ -1,0 +1,135 @@
+<section id="como-funciona" class="rl-cream scroll-mt-[72px] py-20">
+  <div class="mx-auto max-w-[1240px] px-6">
+    <div data-reveal="up" class="text-center max-w-[680px] mx-auto mb-14">
+      <span class="inline-block text-[11px] font-bold tracking-[.18em] uppercase text-[#b85527] mb-3">Comparativa</span>
+      <h2 class="text-[clamp(26px,3.8vw,42px)] font-extrabold tracking-[-0.022em] leading-[1.1] text-[#1a1a1a]">
+        Dos formas de operar.<br/>Solo una te da control.
+      </h2>
+      <p class="mt-3.5 text-[16px] text-[#525252] leading-[1.55]">El mismo local. El mismo equipo. Resultado completamente diferente.</p>
+    </div>
+
+    <div id="comparativa" class="grid grid-cols-1 md:grid-cols-2 gap-5 scroll-mt-[72px]">
+      {/* SIN RESTU */}
+      <div data-reveal="left" class="relative rounded-[22px] p-7 border flex flex-col gap-5 overflow-hidden"
+        style="border-color: #fecaca; background: linear-gradient(160deg, #fff5f5, #fff)">
+        <span class="absolute top-5 right-5 text-[10px] font-bold uppercase tracking-[.1em] px-3 py-1 rounded-full"
+          style="background: #fee2e2; color: #b91c1c">Sin Restu</span>
+        <div class="text-[21px] font-extrabold text-[#1a1a1a]">Caos manual</div>
+        <div class="rl-scene-bad rounded-[14px] min-h-[180px] relative overflow-hidden flex items-center justify-center">
+          {[['-11deg', '28%', '14%', '#fff'], ['7deg', '16%', '36%', '#fffbeb'], ['-4deg', '40%', '52%', '#fef2f2'], ['13deg', '22%', '64%', '#fff']].map(([r, t, l, bg], i) => (
+            <div class="absolute flex flex-col gap-[3px] p-[7px] rounded-[3px]"
+              style={`width: 72px; height: 88px; background: ${bg}; transform: rotate(${r}); top: ${t}; left: ${l}; box-shadow: 0 3px 10px -2px rgba(0,0,0,.18); border: 1px solid #f1f5f9`}>
+              <div style="height: 3px; border-radius: 2px; background: #94a3b8; width: 55%"/>
+              <div style="height: 3px; border-radius: 2px; background: #e5e7eb"/>
+              <div style="height: 3px; border-radius: 2px; background: #e5e7eb; width: 38%"/>
+              <div style="height: 3px; border-radius: 2px; background: #e5e7eb"/>
+            </div>
+          ))}
+          <div class="absolute text-[22px] font-black text-[#dc2626]" style="top: 12%; left: 15%; transform: rotate(-6deg)">✗</div>
+          <div class="absolute text-[22px] font-black text-[#dc2626]" style="top: 52%; left: 40%; transform: rotate(7deg)">✗</div>
+        </div>
+        <div class="flex flex-col gap-3">
+          {[
+            {
+              icon: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m15 9-6 6"/><path d="m9 9 6 6"/></svg>`,
+              title: 'Tickets perdidos',
+              desc: 'Una comanda en el piso y el pedido nunca llega a la cocina.',
+              color: '#dc2626',
+              bg: '#fee2e2'
+            },
+            {
+              icon: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>`,
+              title: 'Cocina lenta y a gritos',
+              desc: 'El garzón corre, la cocina no escucha, el cliente espera.',
+              color: '#dc2626',
+              bg: '#fee2e2'
+            },
+            {
+              icon: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>`,
+              title: 'Sin trazabilidad',
+              desc: 'No sabes qué se vendió, qué falló ni qué inventario queda.',
+              color: '#dc2626',
+              bg: '#fee2e2'
+            },
+          ].map(({ icon, title, desc, color, bg }) => (
+            <div class="flex gap-3 items-start">
+              <span class="flex-shrink-0 w-[27px] h-[27px] rounded-[8px] flex items-center justify-center" style={`background: ${bg}; color: ${color}`} set:html={icon} aria-hidden="true"/>
+              <span>
+                <strong class="block font-bold text-[14px] mb-[1px]">{title}</strong>
+                <span class="text-[12.5px] text-[#525252] leading-[1.45]">{desc}</span>
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* CON RESTU */}
+      <div data-reveal="right" class="relative rounded-[22px] p-7 border flex flex-col gap-5 overflow-hidden"
+        style="border-color: #bbf7d0; background: linear-gradient(160deg, #f0fdf4, #fff); box-shadow: 0 20px 40px -20px rgba(22, 163, 74, .15)">
+        <span class="absolute top-5 right-5 text-[10px] font-bold uppercase tracking-[.1em] px-3 py-1 rounded-full"
+          style="background: #dcfce7; color: #15803d">Con Restu</span>
+        <div class="text-[21px] font-extrabold text-[#1a1a1a]">Flujo digital</div>
+        <div class="rounded-[14px] min-h-[180px] flex items-center justify-center p-5 border border-[#e5e7eb] bg-white">
+          <div class="grid gap-2.5 rounded-xl p-3 w-full max-w-[330px] text-white text-[9.5px]"
+            style="grid-template-columns: repeat(3, 1fr); background: #0c0c0f">
+            <div class="col-span-3 flex justify-between border-b border-white/[.07] pb-2 mb-0.5 font-bold">
+              <span class="flex items-center gap-1.5">
+                <span style="width: 6px; height: 6px; border-radius: 50%; background: #7bb377; display: inline-block"/>
+                Cocina
+              </span>
+              <span style="color: rgba(255,255,255,.45)">3 órdenes</span>
+            </div>
+            {[
+              { n: '#028', t: '0:12', i: '1× Pizza · 1× Coca', hot: true },
+              { n: '#027', t: '4:21', i: '2× Burger · Papas', hot: false },
+              { n: '#026', t: '6:48', i: '1× Lasagna', hot: false },
+            ].map(tk => (
+              <div class="flex flex-col gap-1 rounded-[7px] p-2"
+                style={`background: ${tk.hot ? 'linear-gradient(160deg, rgba(255, 106, 61, .1), rgba(255, 106, 61, .02))' : '#1a1a1f'}; border: 1px solid ${tk.hot ? 'rgba(255, 106, 61, .38)' : 'rgba(255, 255, 255, .05)'}; min-height: 74px`}>
+                <span style={`font-weight: 800; font-size: 11px; color: ${tk.hot ? '#ff8a5c' : '#fff'}`}>{tk.n}</span>
+                <span style="font-size: 7.5px; color: rgba(255,255,255,.45)">{tk.t}</span>
+                <span style="font-size: 8px; color: rgba(255,255,255,.75); line-height: 1.4">{tk.i}</span>
+                <span style={`margin-top: auto; font-size: 7.5px; text-align: center; padding: 2px 4px; border-radius: 4px; background: ${tk.hot ? '#DE6B35' : 'rgba(255,255,255,.06)'}; font-weight: 700; text-transform: uppercase; letter-spacing: .05em`}>
+                  {tk.hot ? 'Tomar' : 'Listo'}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="flex flex-col gap-3">
+          {[
+            {
+              icon: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
+              title: 'Cero tickets perdidos',
+              desc: 'Cada pedido aparece automáticamente en la pantalla de cocina.',
+              color: '#15803d',
+              bg: '#dcfce7'
+            },
+            {
+              icon: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
+              title: 'Cocina ordenada',
+              desc: 'Cronómetro por pedido, estados claros, sin gritos.',
+              color: '#15803d',
+              bg: '#dcfce7'
+            },
+            {
+              icon: `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>`,
+              title: 'Todo trazado',
+              desc: 'Lotes, stock y ventas: un dashboard, en tiempo real.',
+              color: '#15803d',
+              bg: '#dcfce7'
+            },
+          ].map(({ icon, title, desc, color, bg }) => (
+            <div class="flex gap-3 items-start">
+              <span class="flex-shrink-0 w-[27px] h-[27px] rounded-[8px] flex items-center justify-center" style={`background: ${bg}; color: ${color}`} set:html={icon} aria-hidden="true"/>
+              <span>
+                <strong class="block font-bold text-[14px] mb-[1px]">{title}</strong>
+                <span class="text-[12.5px] text-[#525252] leading-[1.45]">{desc}</span>
+              </span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

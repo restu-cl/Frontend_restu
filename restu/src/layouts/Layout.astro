@@ -1,0 +1,145 @@
+---
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  ogUrl?: string;
+}
+
+const {
+  title = 'Restu — Control total de tu restaurante',
+  description = 'La plataforma que conecta a tus clientes directo a tu cocina. Sin comisiones de marketplace y con control total del pedido, el inventario y el margen.',
+  canonical,
+  ogImage = '/og-image.svg',
+  ogUrl,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    {/* Open Graph */}
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content="Restu" />
+    {ogUrl && <meta property="og:url" content={ogUrl} />}
+
+    {/* Twitter Card */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    {ogUrl && <meta name="twitter:url" content={ogUrl} />}
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  </head>
+  <body class="rl min-h-screen w-full antialiased">
+    <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+    <slot />
+    <script>
+      // Scroll reveal
+      const els = document.querySelectorAll('[data-reveal]');
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+      els.forEach(el => io.observe(el));
+
+      // Mobile menu toggle
+      const mobileBtn = document.getElementById('mobile-menu-btn');
+      const mobileNav = document.getElementById('mobile-nav');
+      const iconMenu = document.getElementById('icon-menu');
+      const iconX = document.getElementById('icon-x');
+
+      function closeMobileMenu() {
+        if (mobileNav) mobileNav.classList.remove('open');
+        if (iconMenu) iconMenu.style.display = '';
+        if (iconX) iconX.style.display = 'none';
+        if (mobileBtn) mobileBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      if (mobileBtn && mobileNav) {
+        mobileBtn.addEventListener('click', () => {
+          const isOpen = mobileNav.classList.toggle('open');
+          if (iconMenu) iconMenu.style.display = isOpen ? 'none' : '';
+          if (iconX) iconX.style.display = isOpen ? '' : 'none';
+          mobileBtn.setAttribute('aria-expanded', String(isOpen));
+        });
+      }
+
+      // Smooth scroll
+      document.querySelectorAll('[data-scroll-to]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const id = btn.getAttribute('data-scroll-to');
+          if (id) {
+            document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            closeMobileMenu();
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  .rl {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #fff9f0;
+    color: #1a1a1a;
+    scroll-behavior: smooth;
+  }
+  .rl-nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(255, 249, 240, .92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #eee5d3;
+  }
+  .rl-mobile {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    background: #fff9f0;
+    transition: max-height .28s cubic-bezier(.4, 0, .2, 1), opacity .2s, visibility 0s .28s;
+  }
+  .rl-mobile.open {
+    max-height: 440px;
+    opacity: 1;
+    visibility: visible;
+    transition: max-height .28s cubic-bezier(.4, 0, .2, 1), opacity .2s, visibility 0s;
+  }
+  .rl-cream {
+    background: #fdf1df;
+    border-top: 1px solid #eee5d3;
+    border-bottom: 1px solid #eee5d3;
+  }
+  .rl-ft:hover {
+    transform: translateY(-3px);
+    border-color: rgba(222, 107, 53, .28) !important;
+    box-shadow: 0 16px 32px -14px rgba(222, 107, 53, .18);
+  }
+  .rl-adv:hover {
+    transform: translateY(-3px);
+    border-color: rgba(222, 107, 53, .22) !important;
+    box-shadow: 0 14px 28px -14px rgba(222, 107, 53, .14);
+  }
+  .rl-scene-bad {
+    background: repeating-linear-gradient(43deg, #fef2f2 0 13px, #fee2e2 13px 26px);
+  }
+</style>
